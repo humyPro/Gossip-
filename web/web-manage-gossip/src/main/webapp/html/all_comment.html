@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>闲言后台</title>
+       <link href="../page/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/amazeui.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/css/core.css" />
+        <link rel="stylesheet" href="../assets/css/menu.css" />
+        <link rel="stylesheet" href="../assets/css/index.css" />
+        <link rel="stylesheet" href="../assets/css/admin.css" />
+        <link rel="stylesheet" href="../assets/css/page/typography.css" />
+        <link rel="stylesheet" href="../assets/css/page/form.css" />
+        
+        <!-- Bootstrap core CSS -->
+        <!-- Custom styles for this template -->
+        <!-- <link href="../css/index.css" rel="stylesheet"> -->
+        <!-- font-awesome -->
+        <!-- <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
+        <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!--        <script src="../js/common/jquery-1.11.3.min.js"></script>
+        <script src="../js/common/jquery.pin.min.js"></script> -->
+        <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+       
+    </head>
+    <body>
+        <!-- Begin page -->
+        <header class="am-topbar am-topbar-fixed-top">      
+           <div class="am-topbar-left am-hide-sm-only">
+                <a href="index.html" class="logo"><span>Gossip</span><i class="zmdi zmdi-layers"></i></a>
+            </div>
+    
+            <div class="contain">
+                <ul class="am-nav am-navbar-nav am-navbar-left">
+
+                    <li><h4 class="page-title">全部评论</h4></li>
+                </ul>
+                
+                <!-- <ul class="am-nav am-navbar-nav am-navbar-right">
+                    <li class="inform"><i class="am-icon-bell-o" aria-hidden="true"></i></li>
+                    <li class="hidden-xs am-hide-sm-only">
+                        <form role="search" class="app-search">
+                            <input type="text" placeholder="Search..." class="form-control">
+                            <a href=""><img src="../assets/img/search.png"></a>
+                        </form>
+                    </li>
+                </ul> -->
+            </div>
+        </header>
+        
+        
+        <!-- end page -->
+        <div role="tabpanel">
+  <!-- 页签导航 -->
+<!--   <ul id="user_tab" class="nav nav-tabs " role="tablist">
+    <li role="presentation" class="active">
+      <a href="#userPanel" aria-controls="userPanel" role="tab" data-toggle="tab">列表</a>
+    </li>
+    <li role="presentation">
+      <a href="#detailPanel" aria-controls="detailPanel" role="tab" data-toggle="tab">详情</a>
+    </li>
+    <li role="presentation">
+      <a href="#addUserPanel" aria-controls="addUserPanel" role="tab" data-toggle="tab">新增</a>
+    </li>
+  </ul> -->
+
+  <!-- 页签面板-->
+  <div class="tab-content">
+    <!-- 用户信息 -->
+    <div role="tabpanel" class="tab-pane active" id="userPanel">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!-- 导入 -->
+<!--   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span class="glyphicon glyphicon-import" aria-hidden="true">导入</span>
+  </button> -->
+  <!-- 导出 -->
+ <!--  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span id="export_user" class="glyphicon glyphicon-export" aria-hidden="true">导出</span>
+  </button> -->
+<!--           <form class="form-inline">
+            <div id="role_type" class="btn-group" role="group" aria-label="角色">
+              <button type="button" class="btn btn-default">讲师</button>
+              <button type="button" class="btn btn-default">学员</button>
+              <button type="button" class="btn btn-default">管理员</button>
+              <button type="button" class="btn btn-default">全部</button>
+            </div>
+            &nbsp;&nbsp;
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">搜索</button>
+              </span>
+            </div>input-group
+          </form> -->
+          <table class="table table-striped" id="user_table" style="text-align: center;">
+            <thead>
+              <tr>
+                <th class="col-md-1" style="text-align: center;width: 200px;">评论时间</th>
+                <th class="col-md-1" style="text-align: center;width: 80px;">评论ID</th>
+                <th class="col-md-1" style="text-align: center;width: 80px;">说说ID</th>
+                <th class="col-md-1" style="text-align: center;width: 80px;">用户ID</th>
+                <!-- <th class="col-md-2" style="text-align: center;width: 120px;">修改时间</th> -->
+                <th class="col-md-1" style="width: 720px; text-align:center;">评论简要</th>
+               <!--  <th class="col-md-1">锁定</th>
+                <th class="col-md-2">角色</th>
+                <th class="col-md-2">操作</th> -->
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- end -->
+      <!-- 分页导航 -->
+      <nav class="col-md-4 col-md-offset-4">
+        <ul class="pagination" id="user_page" style="width:500px;">
+          <li>
+            <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li>
+            <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+<!--     用户详情
+    <div role="tabpanel" class="tab-pane" id="detailPanel">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object img-circle" src="../page/images/size.png" alt="头像">
+              </a>
+            </div>
+            <div class="media-body">
+              <h1 class="media-heading">caocao</h1>
+              <br/>
+              <p>账号类型：<span>邮箱</span></p>
+              <p>昵称：<span>曹操</span></p>
+              <p>性别：<span>男</span></p>
+              <p>年龄：<span>23</span></p>
+              <p>积分：<span>1000</span></p>
+              <p>注册日期：<span>2015-07-03</span></p>
+              <p>锁定：<span>否</span></p>
+              <p>角色：<span>管理员，讲师</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- 新增用户 -->
+    <!-- <div role="tabpanel" class="tab-pane" id="addUserPanel">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="inputEmail">用户名:</label>
+              <div class="col-md-8">
+                <input type="email" id="inputEmail" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="inputPassword">密码:</label>
+              <div class="col-md-8">
+                <input type="password" id="inputPassword" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="inputPassword2">确认密码:</label>
+              <div class="col-md-8">
+                <input type="password" id="inputPassword2" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="nickName">昵称:</label>
+              <div class="col-md-8">
+                <input type="text" id="nickName" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="age">年龄:</label>
+              <div class="col-md-8">
+                <input type="number" id="age" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="roleCategory" class="col-md-2 control-label">角色:</label>
+              <div class="col-md-8">
+                <select id="roleCategory" class="form-control">
+                  <option></option>
+                  <option>超级管理员</option>
+                  <option>讲师</option>
+                  <option>学员</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label">性别:</label>
+              <div class="col-md-8">
+                <div class="radio">
+                  <label>
+                    <input name="user-type" type="radio" value='男'>男
+                  </label>
+                  &nbsp;
+                  <label>
+                    <input name="user-type" type="radio" value='女'>女
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-2 control-label" for="addHeadPicture">头像:</label>
+              <div class="col-md-8">
+                <input type="file" id="addHeadPicture" name="addPicture">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-8 col-md-offset-2">
+                <button type="submit" class="btn btn-primary">确 认</button>
+                <button type="reset" class="btn btn-primary">重 置</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- end -->
+</div>
+<!-- end content-->
+
+<!-- 删除用户的Modal界面 -->
+<!-- <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+                    删除用户
+        </h4>
+      </div>
+      <div class="modal-body">
+                确认删除该记录？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">
+                    确 认
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                     取 消
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- 删除用户end -->
+
+<!-- 修改教师的Modal界面 -->
+<div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" align="center">
+        <h4 class="modal-title" id="myModalLabel">
+          <strong>编 辑 用 户</strong>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" action="" method="post">
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="inputEmail">用户名:</label>
+            <div class="col-md-8">
+              <input type="email" id="inputEmail" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="inputPassword">密码:</label>
+            <div class="col-md-8">
+              <input type="password" id="inputPassword" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="inputPassword2">确认密码:</label>
+            <div class="col-md-8">
+              <input type="password" id="inputPassword2" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="nickName">昵称:</label>
+            <div class="col-md-8">
+              <input type="text" id="nickName" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="age">年龄:</label>
+            <div class="col-md-8">
+              <input type="number" id="age" class="form-control">
+            </div>
+          </div>
+
+            <div class="form-group">
+              <label for="courseCategory" class="col-md-3 control-label">角色:</label>
+              <div class="col-md-8">
+                <select id="courseCategory" class="form-control">
+                  <option></option>
+                  <option>超级管理员</option>
+                  <option>讲师</option>
+                  <option>学员</option>
+                </select>
+              </div>
+            </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">性别:</label>
+            <div class="col-md-8">
+              <div class="radio">
+                <label>
+                  <input name="user-type" type="radio" value="0">男
+                </label>
+                &nbsp;
+                <label>
+                  <input name="user-type" type="radio" value="1">女
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="picture">头像:</label>
+            <div class="col-md-8">
+              <input type="file" id="picture">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-8">
+              <button type="submit" class="btn btn-primary">确 认</button>
+              <button type="reset" class="btn btn-primary" data-dismiss="modal">取 消</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 导入 -->
+<!-- <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" align="center">
+        <h4 class="modal-title" id="myModalLabel">
+          <strong>导入用户</strong>
+        </h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="picture">导入:</label>
+            <div class="col-md-8">
+              <input type="file" id="import_user">
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+        
+        <!-- navbar -->
+        <a href="admin-offcanvas" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"><!--<i class="fa fa-bars" aria-hidden="true"></i>--></a>
+        
+        <script type="text/javascript" src="../assets/js/jquery-2.1.0.js" ></script>
+        <script type="text/javascript" src="../page/js/common/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../assets/js/amazeui.min.js"></script>
+        <script type="text/javascript" src="../assets/js/app.js" ></script>
+        <script type="text/javascript" src="../assets/js/blockUI.js" ></script>
+        <script type="text/javascript" src="../page/js/pinglun.js" ></script>
+    </body>
+    
+</html>
