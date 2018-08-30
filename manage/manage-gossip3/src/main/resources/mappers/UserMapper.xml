@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gossip.manage.mapper.UserMapper">
+
+	<select id="newRegistLimitFive"
+			resultType="User">
+		select 
+			user_id,
+			phone,
+			username,
+			password,
+			email,
+			image,
+			created,
+			updated,
+			last_login_ip,
+			last_login_time,
+			user_role,
+			gender,
+			age,
+			signed,
+			location
+		from user
+		order by created desc
+		limit 5
+	</select>
+	
+	<select id="selectOnlineCount"
+			parameterType="String"
+			resultType="Long">
+		select 
+			count(user_id)
+		from user 
+		where 
+			last_login_time=#{dateNowStr}
+	</select>
+	
+	
+	<select id="selectRegistCount"
+			parameterType="String"
+			resultType="Long">
+		select 
+			count(user_id)
+		from user 
+		where 
+			created=#{dateNowStr}
+	</select>
+	     
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gossip.manage.mapper.CommentMapper">
+
+
+	<!-- comment_info的resultMap -->
+	<resultMap type="CommentInfo" id="CommentInfoMap">
+		<result property="commentId" column="comment_id" jdbcType="BIGINT"/>
+		<result property="commentText" column="comment_text" jdbcType="CLOB"/>
+	</resultMap>
+	<!-- comment的resultMap -->
+	<resultMap type="CommentVo" id="commentMap">
+		<id property="commentId" column="comment_id" jdbcType="BIGINT"/>
+		<result property="postId" column="post_id" jdbcType="BIGINT"/>
+		<result property="commentTime" column="comment_time" jdbcType="DATE"/>
+		<result property="userId" column="user_id" jdbcType="BIGINT"/>
+		<result property="image" column="image" jdbcType="VARCHAR"/>
+		<collection property="commentInfo" ofType="CommentInfo" 
+		            javaType="CommentInfo"
+		            resultMap="CommentInfoMap"></collection>
+	</resultMap>
+	
+	<select id="findDayComment"
+			parameterType="String"
+			resultType="Long">
+		select
+				count(comment_id)
+		from comment
+		where
+			comment_time = #{dateNowStr}
+	</select>
+	
+	<select id="newCommentLimitTen"
+			resultMap="commentMap">
+		select
+			c.comment_id,
+			c.post_id,
+			c.comment_time,
+			c.user_id,
+			c.image,
+			ci.comment_text
+		from comment c
+		left join comment_info ci on c.comment_id=ci.comment_id
+		order by comment_time desc
+		limit 10
+	</select>
+	
+	<select id="selectWeekCount"
+			parameterType="String"
+			resultType="Long">
+		select
+				count(comment_id)
+		from comment
+		where
+			comment_time = #{dateNowStr}
+	</select>
+	
+	
+	<select id="selectTodayCount"
+			parameterType="String"
+			resultType="Long">
+		select
+				count(comment_id)
+		from comment
+		where
+			comment_time = #{dateNowStr}
+	</select>
+	
+	<select id="findPostsAllByPage"
+			parameterType="com.gossip.manage.vo.Page"
+			resultMap="commentMap">
+		select
+			c.comment_id,
+			c.post_id,
+			c.comment_time,
+			c.user_id,
+			c.image,
+			ci.comment_text
+		from comment c
+		left join comment_info ci on c.comment_id=ci.comment_id
+		order by comment_time desc
+		limit #{begin},#{pageSize}
+	</select>
+	
+
+	<select id="findCommentVo"
+			parameterType="Long"
+			resultMap="commentMap">
+		select
+			c.comment_id,
+			c.post_id,
+			c.comment_time,
+			c.user_id,
+			c.image,
+			ci.comment_text
+		from comment c
+		left join comment_info ci on c.comment_id=ci.comment_id where c.post_id=#{postId}
+	</select>
+	
+	<insert id="insertComment"
+			parameterType="Comment">
+		insert into comment 
+		values(null,#{postId},#{commentTime},#{userId},#{image}) 
+	</insert>
+	
+	<select id="findMaxId"
+			resultType="Long">
+		select max(comment_id) from comment;
+	</select>
+
+
+</mapper>
